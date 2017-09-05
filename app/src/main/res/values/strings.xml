@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">reservation-android-app</string>
+    <string name="retrieve_button">Retrieve</string>
+</resources>
