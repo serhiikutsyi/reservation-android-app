@@ -1,4 +1,5 @@
 <resources>
-    <string name="app_name">reservation-android-app</string>
-    <string name="retrieve_button">Retrieve</string>
+    <string name="app_name">Reservations</string>
+    <string name="menu_action_add">Add</string>
+    <string name="menu_action_refresh">Refresh</string>
 </resources>
