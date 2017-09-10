@@ -1,7 +1,6 @@
 package com.serhiikutsyi.reservation.adapter;
 
 import android.support.v7.widget.RecyclerView;
-import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,7 +31,9 @@ public class ReservationAdapter extends RecyclerView.Adapter<ReservationAdapter.
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Reservation reservation = reservations.get(position);
-        holder.reservationDeails.setText(reservation.getFirstName() + " " + reservation.getLastName() + ", room " + reservation.getRoomNumber() + ", from " + reservation.getStartDate() + " to " + reservation.getEndDate());
+        holder.name.setText(reservation.getFirstName() + " " + reservation.getLastName());
+        holder.room.setText("Room # " + reservation.getRoomNumber());
+        holder.date.setText("from " + reservation.getStartDate() + " to " + reservation.getEndDate());
     }
 
     @Override
@@ -43,11 +44,15 @@ public class ReservationAdapter extends RecyclerView.Adapter<ReservationAdapter.
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView reservationDeails;
+        private TextView name;
+        private TextView room;
+        private TextView date;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            reservationDeails = (TextView) itemView.findViewById(R.id.reservation_item_details);
+            name = itemView.findViewById(R.id.reservation_item_name);
+            room = itemView.findViewById(R.id.reservation_item_room);
+            date = itemView.findViewById(R.id.reservation_item_date);
         }
     }
 }
