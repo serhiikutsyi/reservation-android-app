@@ -3,10 +3,12 @@ package com.serhiikutsyi.reservation.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
 /**
  * @author Serhii Kutsyi
  */
-public class Reservation {
+public class Reservation implements Serializable {
 
     @SerializedName("id")
     @Expose

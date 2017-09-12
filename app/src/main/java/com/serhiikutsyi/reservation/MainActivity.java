@@ -9,8 +9,6 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 
 import com.serhiikutsyi.reservation.adapter.ReservationAdapter;
@@ -27,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private List<Reservation> reservations;
+    private String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         reservations = new ArrayList<>();
+        getReservations();
 
         recyclerView = (RecyclerView) findViewById(R.id.reservation_recycle_view);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
@@ -42,10 +42,9 @@ public class MainActivity extends AppCompatActivity {
         ReservationAdapter adapter = new ReservationAdapter(reservations);
         recyclerView.setAdapter(adapter);
 
-        getReservations();
-
         Toolbar mToolBar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolBar);
+
     }
 
     public void getReservations() {
@@ -74,10 +73,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(android.view.MenuItem item) {
         if (item.getItemId() == R.id.action_add) {
-            Toast.makeText(MainActivity.this,
-                    "You have clicked on Add action TBD",
-                    Toast.LENGTH_SHORT)
-                    .show();
+            Intent intent = new Intent(MainActivity.this, EditActivity.class);
+            intent.setAction(EditActivity.NEW_RESERVATION);
+            intent.putExtra("reservation", new Reservation());
+            startActivity(intent);
         }
         if (item.getItemId() == R.id.action_refresh) {
             getReservations();
