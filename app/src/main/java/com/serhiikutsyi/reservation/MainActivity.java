@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
                 reservations.clear();
                 reservations.addAll(response.body());
                 recyclerView.getAdapter().notifyDataSetChanged();
+                Log.v(TAG, "getReservations called");
             }
 
             @Override
@@ -82,6 +83,12 @@ public class MainActivity extends AppCompatActivity {
             getReservations();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        getReservations();
     }
 
 }

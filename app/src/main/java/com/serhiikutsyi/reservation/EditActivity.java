@@ -78,7 +78,6 @@ public class EditActivity extends AppCompatActivity {
                 mReservation.setStartDate(mStartDateEditText.getText().toString());
                 mReservation.setEndDate(mEndDateEditText.getText().toString());
                 saveReservation(mReservation);
-                onBackPressed();
             }
         });
 
@@ -89,6 +88,7 @@ public class EditActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<Reservation> call, Response<Reservation> response) {
                 Log.v(TAG, "Reservation is saved!");
+                onBackPressed();
             }
 
             @Override
@@ -103,6 +103,7 @@ public class EditActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<Reservation> call, Response<Reservation> response) {
                 Log.v(TAG, "Reservation is deleted!");
+                onBackPressed();
             }
 
             @Override
@@ -128,7 +129,6 @@ public class EditActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(android.view.MenuItem item) {
         if (item.getItemId() == R.id.action_delete) {
             deleteReservation(mReservation.getId());
-            onBackPressed();
         }
         return super.onOptionsItemSelected(item);
     }
